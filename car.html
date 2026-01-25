@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>2D Racing Game</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    canvas {
+      background: #555;
+      border: 3px solid #fff;
+      display: none;
+    }
+
+    #menu {
+      text-align: center;
+      color: white;
+    }
+
+    #menu button {
+      padding: 10px 20px;
+      font-size: 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    #gameOverScreen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.8);
+      padding: 30px;
+      border: 3px solid white;
+      text-align: center;
+      color: white;
+      display: none;
+    }
+
+    #gameOverScreen button {
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <div id="menu">
+    <h1>2D Racing Game</h1>
+    <button id="startBtn">Start Game</button>
+    <p id="highscoreText">Highscore: 0</p>
+
+    <br><br>
+
+    <label for="select">Your Car:</label>
+    <select name="yourCar">
+      <option value="RedBull">Red Bull</option>
+      <option value="McLaren">McLaren</option>
+      <option value="Mercedes">Mercedes</option>
+      <option value="Ferrari">Ferrari</option>
+      <option value="Williams">Williams</option>
+      <option value="RacingBulls">Racing Bulls</option>
+      <option value="AstonMartin">Aston Martin</option>
+      <option value="Haas">Haas</option>
+      <option value="KickSauber">Kick Sauber</option>
+      <option value="Alpine">Alpine</option>
+    </select>
+
+    <br>
+
+    <label for="select">Opponent Car:</label>
+    <select name="OpponentCar">
+      <option value="RedBull">Red Bull</option>
+      <option value="McLaren">McLaren</option>
+      <option value="Mercedes">Mercedes</option>
+      <option value="Ferrari">Ferrari</option>
+      <option value="Williams">Williams</option>
+      <option value="RacingBulls">Racing Bulls</option>
+      <option value="AstonMartin">Aston Martin</option>
+      <option value="Haas">Haas</option>
+      <option value="KickSauber">Kick Sauber</option>
+      <option value="Alpine">Alpine</option>
+    </select>
+  </div>
+
+  <!-- GAME CANVAS -->
+  <canvas id="game" width="400" height="600"></canvas>
+
+  <!-- GAME OVER SCREEN -->
+  <div id="gameOverScreen">
+    <h1>Game Over</h1>
+    <p id="finalScore">Score: 0</p>
+    <button id="restartBtn">Restart</button>
+  </div>
+
+  <!-- FULLSCREEN LOADING VIDEO -->
+  <div id="loadingScreen" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:black;
+    z-index:9999;
+    overflow:hidden;
+  ">
+    <video 
+      src="carpassing.mp4"
+      autoplay
+      muted
+      playsinline
+      style="width:100%; height:100%; object-fit:cover;">
+    </video>
+  </div>
+
+  <script src="car.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+</script>
+
+</body>
+</html>
