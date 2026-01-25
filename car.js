@@ -141,9 +141,17 @@ document.addEventListener("keydown", e => keys[e.key] = true);
 document.addEventListener("keyup", e => keys[e.key] = false);
 
 function movePlayer() {
-  if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
-  if (keys["ArrowRight"] && player.x < canvas.width - player.width) player.x += player.speed;
+  // LEFT movement: ArrowLeft or A
+  if ((keys["ArrowLeft"] || keys["a"] || keys["A"]) && player.x > 0) {
+    player.x -= player.speed;
+  }
+
+  // RIGHT movement: ArrowRight or D
+  if ((keys["ArrowRight"] || keys["d"] || keys["D"]) && player.x < canvas.width - player.width) {
+    player.x += player.speed;
+  }
 }
+
 
 // ====== COLLISION DETECTION ======
 function checkCollision(a, b) {
@@ -243,3 +251,4 @@ function gameLoop() {
 
   requestAnimationFrame(gameLoop);
 }
+
