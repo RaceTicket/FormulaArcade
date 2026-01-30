@@ -180,6 +180,10 @@ function detectCrashes() {
       gameOverScreen.style.display = "block";
       canvas.style.display = "none";
 
+      // HIDE BUTTONS ON GAME OVER
+      document.getElementById("leftControl").style.display = "none";
+      document.getElementById("rightControl").style.display = "none";
+
       return;
     }
   }
@@ -223,9 +227,14 @@ function startGame() {
   score = 0;
   enemies.length = 0;
 
+  // SHOW BUTTONS
+  document.getElementById("leftControl").style.display = "block";
+  document.getElementById("rightControl").style.display = "block";
+
   gameRunning = true;
   gameLoop();
 }
+
 
 // ====== GAME LOOP ======
 function gameLoop() {
@@ -253,4 +262,16 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
+// ====== TOUCH BUTTONS ======
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
 
+leftBtn.addEventListener("mousedown", () => keys["ArrowLeft"] = true);
+leftBtn.addEventListener("mouseup", () => keys["ArrowLeft"] = false);
+leftBtn.addEventListener("touchstart", () => keys["ArrowLeft"] = true);
+leftBtn.addEventListener("touchend", () => keys["ArrowLeft"] = false);
+
+rightBtn.addEventListener("mousedown", () => keys["ArrowRight"] = true);
+rightBtn.addEventListener("mouseup", () => keys["ArrowRight"] = false);
+rightBtn.addEventListener("touchstart", () => keys["ArrowRight"] = true);
+rightBtn.addEventListener("touchend", () => keys["ArrowRight"] = false);
