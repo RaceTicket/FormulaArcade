@@ -79,7 +79,7 @@ function restartGame() {
 // ====== CAR IMAGE MAP ======
 const carImages = {
   RedBull: "redbull.png",
-  McLaren: "mcllaren.png",
+  McLaren: "mclaren.png",
   Mercedes: "mercedes.png",
   Ferrari: "ferrari.png",
   Williams: "williams.png",
